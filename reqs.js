@@ -45,7 +45,7 @@ function deliver(build,files,st,done){
   }
   var data={files:files,text:text},can=false;
   try{can=files.length&&navigator.share&&navigator.canShare&&navigator.canShare(data)}catch(e){}
-  if(!can){openWA();return}
+  can=false;if(!can){openWA();return}
   text=build(true);var copied=false;
   navigator.share(data).then(function(){
     st.textContent=copied?'تم. لو النص ما ظهرش مع الصور، الصقه في المحادثة (اتنسخ تلقائيًا).':'تم. لو النص ما ظهرش مع الصور، اكتبه في المحادثة.';
